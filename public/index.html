@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Anna & Marvin">
+    <meta name="description" content="Dieser Beschreibungstext soll mit in der Suchergebnisliste erscheinen.">
+    <title>Immec</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" sizes="32x32">
+    <link rel="icon" type="image/svg+xml" href="images/zoo.svg" sizes="any">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <script type="text/javascript" data-main="js/appclient" src="js/require.js" defer="true"></script>
+    <script src="https://use.fontawesome.com/4da6f50267.js"></script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header>
+        <form>
+
+            <input type="search" name="search" placeholder="Search...">
+            <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+        </form>
+    </header>
+    <menu id="menu">
+        <div id="logo">
+            <img alt="immec-logo" src="images/zoo.svg">
+            <h1>IMMEC</h1>
+        </div>
+        <ul>
+            <li>
+                <a class="button__highlight--search" href="#"><i class="fa fa-search" aria-hidden="true"></i><span>Search</span></a>
+            </li>
+            <li>
+                <a class="button__highlight" href="/"><i class="fa fa-bars" aria-hidden="true"></i><span>Home</span></a>
+            </li>
+            <li>
+                <a href="http://localhost:3000/#/firstpage"><i class="fa fa-bullhorn" aria-hidden="true"></i><span>What's hot?</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i><span>See what's new!</span></a>
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li>
+                <a class="button__highlight--upload" href="#"><i class="fa fa-picture-o" aria-hidden="true"></i><span>Upload a new picture</span></a>
+            </li>
+            <li>
+                <a class="button__highlight--likes" href="#"><i class="fa fa-gratipay" aria-hidden="true"></i><span>Likes</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i><span>Your follower</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-bell" aria-hidden="true"></i><span>Subscriptions</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-history" aria-hidden="true"></i><span>History</span></a>
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li>
+                <a class="button__highlight--options" href="#"><i class="fa fa-cog" aria-hidden="true"></i><span>Options</span></a>
+            </li>
+            <li>
+                <a class="button__highlight--options" href="#"><i class="fa fa-building-o" aria-hidden="true"></i><span>Imprint</span></a>
+            </li>
+            <li>
+                <a class="button__highlight--options" href="#"><i class="fa fa-briefcase" aria-hidden="true"></i><span>Jobs</span></a>
+            </li>
+        </ul>
+    </menu>
+    <main id="main">
+        <script type="text/template" id="pin-template">
+                <a name="like" class="imgWrapper likeButton <%= like %>">
+                    Erstellt am: <span class="datum"><%= timestamp %></span>
+                    <figure class="image">
+                        <img class="item" src="http://via.placeholder.com/700x450/fd9f85/ffffff" alt="<%= title %>">
+                        <figcaption><%= title %></figcaption>
+                    </figure>
+                </a>
+        </script>
+    </main>
+    <div id="modal-append">
+        <script type="text/template" id="modal-template">
+            <div class="modal" id="modal" style="display: <%= display %>;">
+                <!-- Modal Content (The Image) -->
+                <img class="modal-content" id="modalImg" src="<%= src %>" style="display: inline-block;">
+                <!-- Modal Caption (Image Text) -->
+                <div id="caption"><p class="description"><%= description %></p><p class="left">Created on: <%= timestamp %></p><p class="right">Views: <%= ranking %></p></div>
+                <!-- The Close Button -->
+                <span class="close">×</span>
+            </div>
+        </script>
+    </div>
+</div>
+<footer>
+    <div>
+        <p>Copyright</p>
+        <p>Imprint</p>
+        <p>Jobs</p>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,330 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+
+/* Global Styles */
+html {
+    box-sizing: border-box;
+    margin:0;
+}
+*, ::before, ::after {
+    box-sizing: inherit;
+}
+p {
+    margin:0;
+}
+
+/*BODY*/
+body {
+    overflow-x: hidden;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 0.8em;
+    margin:0;
+    color: #878787;
+}
+
+#wrapper {
+    overflow: auto;
+    background: #f5f5f5;
+}
+
+/* MAIN */
+main {
+    float: left;
+    width: 78%;
+    text-align: center;
+    background: #fff;
+    padding-bottom: 30px;
+    padding-right: 10px;
+    display:flex;
+    list-style:none;
+    list-style-type: none;
+    margin: 0 auto;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+#main a {
+    display:block;
+}
+
+/* Images, Videos */
+.item, .image, .video{
+    width: 260px;
+    min-height:300px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 0;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+    margin: 5px;
+    margin-bottom: 0px;
+    opacity: 1;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    cursor: pointer;
+}
+
+.item:hover, .video:hover {
+    opacity: 0.7;
+}
+.videoitem:hover {
+    opacity: 1;
+}
+
+/* Vergrößern-Button */
+.image::after, .video::after {
+    opacity: 0;
+    content: "\f00e";
+    font-size: 5em;
+    font-family: "FontAwesome";
+    display:block;
+    height: 30px;
+    width:30px;
+    line-height:30px;
+    text-align: center;
+    color: rgba(1,1,1,0.2);
+    border-radius: 50%;
+    position: absolute;
+    margin-top: -190px;
+    margin-left: 110px;
+    z-index: 10;
+    pointer-events: none;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+
+.image:hover::after, .video:hover::after {
+    opacity: 1;
+}
+
+.imgWrapper {
+    padding: 0;
+    margin-bottom: -30px;
+}
+/* Like-Button */
+.imgWrapper::before {
+    visibility: hidden;
+    content: "\f004";
+    font-family: "FontAwesome";
+    display:block;
+    height: 30px;
+    width:30px;
+    line-height:30px;
+    text-align: center;
+    color: #bf5552;
+    border-radius: 50%;
+    position: relative;
+    top: 65px;
+    left: 20px;
+    z-index: 10;
+    background-color: #fff;
+    pointer-events: none;
+    transition: all 0.2s;
+}
+
+.isLiked::before {
+    visibility: visible;
+    pointer-events: none;
+    background-color: #bf5552;
+    color: #fff;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+.imgWrapper:hover::before {
+    visibility: visible;
+    pointer-events: none;
+}
+.imgWrapper::before:hover {
+    opacity: 0;
+}
+/* Merken-Buttom */
+.imgWrapper::after {
+    /*
+    visibility: hidden;
+    content: "\f08d";
+    font-size: 1.2em;
+    font-family: "FontAwesome";
+    display:block;
+    height: 30px;
+    width:30px;
+    line-height:30px;
+    text-align: center;
+    color: #bf5552;
+    border-radius: 50%;
+    position: relative;
+    bottom: 65px;
+    left: 230px;
+    z-index: 10;
+    background-color: #fff;
+    pointer-events: none;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;*/
+}
+
+.imgWrapper:hover::after {
+    visibility: visible;
+    pointer-events: none;
+}
+.isRemembered::after {
+    visibility: visible;
+    pointer-events: none;
+    background-color: #bf5552;
+    color: #fff;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+figcaption, .caption {
+    font-size: 1.5em;
+}
+
+/* MODAL */
+/* Modal (Hintergrund) */
+#modal-append {
+    text-align: center;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 15;
+    padding-top: 5%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+/* Modal Content (Bild) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    max-height: 80vh;
+    object-fit: contain;
+}
+.modal-content img,
+.modal-content video {
+    object-fit: contain;
+}
+
+/* Caption */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    line-height: 1.5em;
+}
+#caption p {
+    display: inline-block;
+}
+#caption p.description {
+    display: block;
+}
+#caption p.left {
+    float: left;
+}
+#caption p.right {
+    float: right;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* Close-Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+/* MEDIA QUERIES*/
+@media only screen and (max-width: 1050px){
+    #menu {
+        width: 30%;
+    }
+    main, header {
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 765px){
+    #menu {
+        width: 40%;
+    }
+    main, header {
+        width: 60%;
+    }
+    .modal-content{
+        width: 100%;
+    }
+    .modal {
+        padding-top:10%;
+    }
+    #caption {
+        width: 100%;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    figcaption, .caption {
+        font-size: 1.2em;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    #menu {
+        width: 20%;
+    }
+    main, header {
+        width: 80%;
+    }
+    .modal {
+        padding-top:15%;
+    }
+}
