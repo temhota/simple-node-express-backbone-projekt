@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 const PinSchema = new Schema({
         title: {type: String, required: true},
-        // ToDo: Validator schreiben
+        // Validator
         type: {type: String, required: true, enum: ['image', 'video', 'website']},
         src: {type: String, required: true},
         description: {type: String, default: ''},
-        // ToDO: nicht negative Zahl
+        // nicht negative Zahl
         views: {type: Number, default: 0, min: 0},
-        // ToDO: nicht negative Zahl
+        // nicht negative Zahl
         ranking: {type: Number, default: 0, min: 0}
     },
     {
