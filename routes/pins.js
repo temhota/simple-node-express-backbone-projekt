@@ -1,6 +1,6 @@
 /** This module defines the routes for pins using the simple-memory-store as db memory
  *
- * @contributors Anna Deeva, Marvin Kullick
+ * @contributors Anna Deeva
  * @licence CC BY-SA 4.0
  *
  * @module routes/pins
@@ -61,7 +61,6 @@ pins.route('/')
     });
 
 
-// pins.route('/:id').....
 pins.route('/:id')
     .get((req, res, next) => {
         PinModel.findOne({ _id : req.params.id}, (err, item) => {
