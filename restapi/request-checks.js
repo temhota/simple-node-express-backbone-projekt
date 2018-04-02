@@ -4,7 +4,7 @@
  * - body to be not empty on POST/PUT/PATCH
  * - Request accepts JSON as reply content-type
  *
- * @author Johannes Konert
+ * @author Anna Deeva
  * @licence CC BY-SA 4.0
  *
  * @module restapi/request-checks
